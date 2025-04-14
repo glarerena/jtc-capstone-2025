@@ -1,0 +1,8 @@
+Q: What should I ask a client first?
+A: Ask about their current living situation and whether they’ve already applied for housing assistance.
+
+Q: What documents are required?
+A: A government-issued ID, proof of income, and any housing-related notices such as eviction letters or lease agreements.
+
+Q: How do I refer someone?
+A: Use the chatbot or resource dashboard to identify the best-fit program, then assist with submitting their application.

@@ -1,0 +1,9 @@
+Q: What’s the first thing to ask a client?
+A: Ask if they’ve applied for any housing assistance before and gather their current living situation.
+
+Q: How do I know which programs a client qualifies for?
+A: Use the chatbot or refer to the eligibility guide in your toolkit to match them with the right program based on income, family size, and housing status.
+
+Q: What should I do if I don’t know the answer?
+A: Use the chatbot or flag the question for follow-up with a supervisor or housing specialist.
+ousing_terms.txt

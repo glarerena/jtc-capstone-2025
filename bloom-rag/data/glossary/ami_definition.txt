@@ -1,0 +1,1 @@
+AMI stands for Area Median Income. It is the midpoint income of a region, used by housing programs to determine eligibility. For example, many programs require applicants to earn less than 50% or 80% of the AMI to qualify.

@@ -1,0 +1,5 @@
+Affordable Housing: Housing that costs no more than 30% of a household's income.
+
+AMI (Area Median Income): The midpoint income for a region, used to determine eligibility for housing programs.
+
+Section 8: A federal housing assistance program that provides rental subsidies to eligible low-income individuals and families.
