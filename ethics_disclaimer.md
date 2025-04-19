@@ -14,6 +14,12 @@ The chatbot is designed to demonstrate how large language models (LLMs) can be u
 - It is **not a substitute** for official housing assistance or legal advice.
 - No personalization or user tracking is performed.
 
+## Example Message of Ethical Statement:
+
+```
+"This is a single-turn chatbot designed to assist with retrieving housing-related information. It does not retain memory between interactions and should not be used to make critical decisions without verification from official sources."
+```
+
 ## Responsible AI Principles
 
 This project follows the AI + Data Ethics Guidelines provided by Bloom Housing, which emphasize:
