@@ -1,14 +1,12 @@
 {
-  "name": "api",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "name": "chatbot",
+  "version": "1.0.0",
   "private": true,
-  "license": "UNLICENSED",
   "scripts": {
-    "build": "nest build",
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
@@ -20,6 +18,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
@@ -28,6 +29,9 @@
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
+    "typescript": "latest",
+    "@types/react": "latest",
+    "@types/node": "latest",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.18.0",
     "@nestjs/cli": "^11.0.0",
@@ -38,7 +42,6 @@
     "@types/axios": "^0.14.4",
     "@types/express": "^5.0.0",
     "@types/jest": "^29.5.14",
-    "@types/node": "^22.10.7",
     "@types/supertest": "^6.0.2",
     "eslint": "^9.18.0",
     "eslint-config-prettier": "^10.0.1",
@@ -52,7 +55,6 @@
     "ts-loader": "^9.5.2",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
   "jest": {
