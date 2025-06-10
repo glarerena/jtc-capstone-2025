@@ -1,0 +1,38 @@
+[
+  {
+    "question": "Where can I apply?",
+    "answer": "To apply for affordable housing through Bloom Housing, visit our application page: https://bloomhousing.com/apply"
+  },
+  {
+    "question": "Who is eligible for affordable housing?",
+    "answer": "Eligibility depends on income, family size, and local housing policies. Check your city or county's requirements on their official housing authority website."
+  },
+  {
+    "question": "What documents do I need to apply?",
+    "answer": "You typically need proof of income, ID, and your most recent tax return. Some locations may also ask for rental history and references."
+  },
+  {
+    "question": "Am I eligible for Section 8?",
+    "answer": "Section 8 eligibility is based on income, household size, and citizenship status. Contact your local housing authority for details."
+  },
+  {
+    "question": "How long is the waitlist for housing in my area?",
+    "answer": "Waitlist times vary by region and demand. Some cities may have open enrollment periods, while others maintain ongoing lists."
+  },
+  {
+    "question": "What is the income limit for low-income housing?",
+    "answer": "Income limits are based on your local area's median income and household size. Check with your housing authority for exact figures."
+  },
+  {
+    "question": "Can I apply if I’m unemployed?",
+    "answer": "Yes, you may still qualify. Unemployment benefits, disability, or other income sources may be considered."
+  },
+  {
+    "question": "Do you help with senior or disability housing?",
+    "answer": "Yes. Specialized programs and units are available for seniors and people with disabilities. Look for local housing options that mention these criteria."
+  },
+  {
+    "question": "Where can I view affordable housing listings?",
+    "answer": "You can view current listings at: https://bloomhousing.com/listings"
+  }
+]

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HERO Chat</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .chat-container {
+      background-color: #fff;
+      width: 400px;
+      height: 600px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header {
+      background-color: #2563eb;
+      color: white;
+      padding: 16px;
+      font-size: 1.25rem;
+      text-align: center;
+    }
+
+    .chat-box {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #888 #f4f4f4;
+    }
+
+    .chat-entry {
+      margin-bottom: 12px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      max-width: 100%;
+      position: relative;
+      font-size: 0.95rem;
+    }
+
+    .chat-entry.user {
+      align-self: flex-end;
+      background-color: #e0f0ff;
+      text-align: right;
+    }
+
+    .chat-entry.bot {
+      align-self: flex-start;
+      background-color: #f0f0f0;
+    }
+
+    .timestamp {
+      font-size: 0.75rem;
+      color: gray;
+      margin-top: 4px;
+    }
+
+    .footer {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    /* Commented out language selector styling */
+    /*
+    .footer select {
+      width: 90px;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+    }
+    */
+
+    .footer input {
+      flex: 1;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+    }
+
+    .footer button {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .reset-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="header">
+      HERO – Housing Assistant
+      <button class="reset-btn" onclick="resetChat()" title="Reset chat">⟲</button>
+    </div>
+    <div class="chat-box" id="chatBox"></div>
+    <form class="footer" id="chatForm">
+      <!-- 🌐 Language selector temporarily disabled -->
+      <!--
+      <select id="language" name="language">
+        <option value="en" selected>English</option>
+        <option value="es">Spanish</option>
+        <option value="zh">Chinese</option>
+        <option value="ar">Arabic</option>
+        <option value="fr">French</option>
+      </select>
+      -->
+      <input type="text" id="userInput" placeholder="Ask a housing question..." autocomplete="off" />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById("chatForm");
+    const input = document.getElementById("userInput");
+    const chatBox = document.getElementById("chatBox");
+
+    // 🔁 Language support temporarily disabled
+    // const languageSelect = document.getElementById("language");
+
+    let lastQuestion = "";
+    let feedbackIdCounter = 0;
+
+    function getTimestamp() {
+      return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function appendMessage(sender, messageHTML, showFeedback = false) {
+      const entry = document.createElement("div");
+      entry.className = `chat-entry ${sender}`;
+
+      const feedbackId = `feedback-${feedbackIdCounter++}`;
+      entry.innerHTML = `
+        ${messageHTML}
+        <div class="timestamp">${getTimestamp()}</div>
+        ${showFeedback ? `
+          <div id="${feedbackId}" style="margin-top: 6px;">
+            <button onclick="sendFeedback('${feedbackId}', 'up')">👍</button>
+            <button onclick="sendFeedback('${feedbackId}', 'down')">👎</button>
+          </div>
+        ` : ""}
+      `;
+      chatBox.appendChild(entry);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    function resetChat() {
+      chatBox.innerHTML = "";
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const message = input.value.trim();
+
+      // 🧬 Language feature currently disabled
+      // const language = languageSelect.value;
+
+      if (!message) return;
+
+      lastQuestion = message;
+      appendMessage("user", `<strong>You:</strong> ${message}`);
+      input.value = "";
+
+      appendMessage("bot", "<em>typing...</em>");
+      const loadingMsg = chatBox.lastElementChild;
+
+      const response = await fetch("/ask", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        // body: JSON.stringify({ message, language })  // 🌐 When re-enabling, uncomment
+        body: JSON.stringify({ message }) // 🔧 Current version sends only message
+      });
+
+      const botHtml = await response.text();
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = botHtml;
+      const botResponse = tempDiv.innerHTML;
+
+      loadingMsg.remove();
+      appendMessage("bot", botResponse, true);
+    });
+
+    function sendFeedback(id, rating) {
+      const feedbackDiv = document.getElementById(id);
+      feedbackDiv.innerHTML = `
+        <div style="margin-top: 8px;">
+          <input type="text" id="commentInput-${id}" placeholder="Optional comment..." style="width: 80%; padding: 4px;" />
+          <button onclick="submitFeedback('${id}', '${rating}')">Submit</button>
+        </div>
+      `;
+    }
+
+    function submitFeedback(id, rating) {
+      const commentInput = document.getElementById(`commentInput-${id}`);
+      const comment = commentInput ? commentInput.value : "";
+
+      fetch("/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: lastQuestion,
+          rating: rating,
+          comment: comment
+        })
+      }).then(() => {
+        const feedbackDiv = document.getElementById(id);
+        if (feedbackDiv) feedbackDiv.innerHTML = "Thanks for your feedback!";
+      });
+    }
+  </script>
+</body>
+</html>

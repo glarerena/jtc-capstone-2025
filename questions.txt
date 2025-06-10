@@ -1,0 +1,29 @@
+🔄 Reworded From Your JSON
+How do I apply for affordable housing?
+
+What documents should I gather before applying?
+
+Who qualifies for Section 8?
+
+What’s the waitlist like in Los Angeles?
+
+Can I get housing help if I’m unemployed?
+
+Are there options for seniors or people with disabilities?
+
+What income is considered low-income where I live?
+
+Where can I find current listings?
+
+💡 New Questions Not in JSON (for testing behavior)
+Can immigrants apply for housing support?
+
+How does rent get calculated in low-income housing?
+
+Is there emergency housing available?
+
+What if I’ve been evicted — can I still apply?
+
+Do you provide housing help for single parents?
+
+
