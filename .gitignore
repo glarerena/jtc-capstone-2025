@@ -46,3 +46,7 @@ build/
 *.swp
 *.tmp
 *~
+# ─── Next.js Artifacts ───────────────────────────────────────
+.next/
+next-env.d.ts
+
